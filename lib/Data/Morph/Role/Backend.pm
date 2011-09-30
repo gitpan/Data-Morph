@@ -1,10 +1,12 @@
 package Data::Morph::Role::Backend;
-BEGIN {
-  $Data::Morph::Role::Backend::VERSION = '1.110540';
+{
+  $Data::Morph::Role::Backend::VERSION = '1.112730';
 }
 use MooseX::Role::Parameterized;
 use MooseX::Types::Moose(':all');
 use MooseX::Params::Validate;
+
+#ABSTRACT: Provides a role to consume to develop specialized backends
 
 
 parameter input_type =>
@@ -54,8 +56,8 @@ role
 
     method generate_instance => sub
     {
-        my ($self) = @_;
-        return $self->new_instance->();
+        my ($self, $input) = @_;
+        return $self->new_instance->($input);
     };
 
 
@@ -100,11 +102,11 @@ role
 
 =head1 NAME
 
-Data::Morph::Role::Backend
+Data::Morph::Role::Backend - Provides a role to consume to develop specialized backends
 
 =head1 VERSION
 
-version 1.110540
+version 1.112730
 
 =head1 SYNOPSIS
 
@@ -181,7 +183,9 @@ rather on individual properties of it, do it here.
     is: ro, isa: CodeRef, required: 1
 
 Each backend should provide a coderef or require one upon construction that is
-an instance factory. The instances returned must match L</input_type>
+an instance factory. The instances returned must match L</input_type>. The
+instance factory will receive the raw input as the only argument to allow for
+dynamic instance creation.
 
 =head2 input_type
 
@@ -194,7 +198,8 @@ types other than the default provided at role consumption
 
 =head2 generate_instance
 
-This method access L</new_instance> and invokes it, returning its return value
+This method access L</new_instance> and invokes it with the provided raw input
+as an argument, returning its return value
 
 =head2 retrieve
 
@@ -220,7 +225,7 @@ Nicholas R. Perez <nperez@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Nicholas R. Perez <nperez@cpan.org>.
+This software is copyright (c) 2011 by Nicholas R. Perez <nperez@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

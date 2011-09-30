@@ -1,11 +1,11 @@
 
 
 This archive contains the distribution Data-Morph,
-version 1.110540:
+version 1.112730:
 
   Morph data from one source to another
 
-This software is copyright (c) 2010 by Nicholas R. Perez <nperez@cpan.org>.
+This software is copyright (c) 2011 by Nicholas R. Perez <nperez@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

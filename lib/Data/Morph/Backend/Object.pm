@@ -1,6 +1,6 @@
 package Data::Morph::Backend::Object;
-BEGIN {
-  $Data::Morph::Backend::Object::VERSION = '1.110540';
+{
+  $Data::Morph::Backend::Object::VERSION = '1.112730';
 }
 
 #ABSTRACT: Provides a Data::Morph backend for talking to objects
@@ -40,7 +40,7 @@ Data::Morph::Backend::Object - Provides a Data::Morph backend for talking to obj
 
 =head1 VERSION
 
-version 1.110540
+version 1.112730
 
 =head1 DESCRIPTION
 
@@ -59,7 +59,7 @@ Nicholas R. Perez <nperez@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Nicholas R. Perez <nperez@cpan.org>.
+This software is copyright (c) 2011 by Nicholas R. Perez <nperez@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

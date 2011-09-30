@@ -1,6 +1,6 @@
 package Data::Morph::Backend::DBIC;
-BEGIN {
-  $Data::Morph::Backend::DBIC::VERSION = '1.110540';
+{
+  $Data::Morph::Backend::DBIC::VERSION = '1.112730';
 }
 
 #ABSTRACT: Provides a Data::Morph backend for DBIx::Class
@@ -12,6 +12,7 @@ use MooseX::Params::Validate;
 use Devel::PartialDump('dump');
 use namespace::autoclean;
 use DBIx::Class;
+use Scalar::Util('weaken');
 
 
 has result_set =>
@@ -34,12 +35,17 @@ has new_instance =>
 (
     is => 'ro',
     isa => CodeRef,
-    default => sub
-    {
-        my ($self) = @_;
-        return sub { $self->result_set->new_result({}) };
-    },
+    lazy => 1,
+    builder => '_build_new_instance',
 );
+
+
+sub _build_new_instance
+{
+    my ($self) = @_;
+    weaken($self);
+    return sub { $self->result_set->new_result({}) };
+}
 
 
 sub epilogue
@@ -99,7 +105,7 @@ Data::Morph::Backend::DBIC - Provides a Data::Morph backend for DBIx::Class
 
 =head1 VERSION
 
-version 1.110540
+version 1.112730
 
 =head1 DESCRIPTION
 
@@ -129,11 +135,11 @@ the newly created and populated instance should be inserted into the database
 
 =head2 new_instance
 
-    is: ro, isa: CodeRef
+    is: ro, isa: CodeRef, lazy: 1, builder: _build_new_instance
 
 This attribute overrides what is provided in L<Data::Morph::Role::Backend> and
-sets a default that returns a coderef that uses L</result_set> to return a new
-row using L<DBIx::Class::ResultSet/new_result>
+uses a builder method that returns a coderef that uses L</result_set> to return
+a new row using L<DBIx::Class::ResultSet/new_result>
 
 =head1 PUBLIC_METHODS
 
@@ -144,13 +150,22 @@ row using L<DBIx::Class::ResultSet/new_result>
 This method implements L<Data::Morph::Role::Backend/epilogue>. It reads
 L</auto_insert> to determine if the row should be inserted into the database.
 
+=head1 PROTECTED_METHODS
+
+=head2 _build_new_instance
+
+This is the builder method for L</new_instance>. If special logic is needed in
+creation of the instance factory, simply override or advise this method as
+needed. By default, it returns a CodeRef that builds L<DBIx::Class::Row>
+objects using L<DBIx::Class::ResultSet/new_result> upon the L</result_set>
+
 =head1 AUTHOR
 
 Nicholas R. Perez <nperez@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Nicholas R. Perez <nperez@cpan.org>.
+This software is copyright (c) 2011 by Nicholas R. Perez <nperez@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

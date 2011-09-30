@@ -1,6 +1,6 @@
 package Data::Morph;
-BEGIN {
-  $Data::Morph::VERSION = '1.110540';
+{
+  $Data::Morph::VERSION = '1.112730';
 }
 
 #ABSTRACT: Morph data from one source to another
@@ -70,7 +70,7 @@ sub _build_morpher
     {
         my ($input) = @_;
 
-        my $instance = $verso->generate_instance();
+        my $instance = $verso->generate_instance($input);
         foreach my $entry (@$map)
         {
             my ($recto_map, $verso_map) = @$entry{qw/recto verso/};
@@ -110,7 +110,7 @@ sub _build_morpher
     {
         my ($input) = @_;
 
-        my $instance = $recto->generate_instance();
+        my $instance = $recto->generate_instance($input);
         foreach my $entry (@$map)
         {
             my ($recto_map, $verso_map) = @$entry{qw/recto verso/};
@@ -174,7 +174,7 @@ Data::Morph - Morph data from one source to another
 
 =head1 VERSION
 
-version 1.110540
+version 1.112730
 
 =head1 SYNOPSIS
 
@@ -383,7 +383,7 @@ Nicholas R. Perez <nperez@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Nicholas R. Perez <nperez@cpan.org>.
+This software is copyright (c) 2011 by Nicholas R. Perez <nperez@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

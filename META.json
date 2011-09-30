@@ -4,7 +4,7 @@
       "Nicholas R. Perez <nperez@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.102341, CPAN::Meta::Converter version 2.102400",
+   "generated_by" : "Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112150",
    "license" : [
       "perl_5"
    ],
@@ -16,7 +16,7 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.31"
+            "ExtUtils::MakeMaker" : "6.30"
          }
       },
       "runtime" : {
@@ -30,6 +30,8 @@
             "MooseX::Role::Parameterized" : 0,
             "MooseX::Types::Moose" : 0,
             "MooseX::Types::Structured" : 0,
+            "SQL::Translator" : "0.11006",
+            "Scalar::Util" : 0,
             "namespace::autoclean" : 0
          }
       },
@@ -39,7 +41,10 @@
             "DBIx::Class::Core" : 0,
             "DBIx::Class::Schema" : 0,
             "Test::More" : 0,
-            "Try::Tiny" : 0
+            "Try::Tiny" : 0,
+            "base" : 0,
+            "strict" : 0,
+            "warnings" : 0
          }
       }
    },
@@ -50,6 +55,6 @@
          "url" : "git://github.com/nperez/data-morph.git"
       }
    },
-   "version" : "1.110540"
+   "version" : "1.112730"
 }
 
