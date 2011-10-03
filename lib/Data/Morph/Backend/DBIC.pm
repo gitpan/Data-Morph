@@ -1,6 +1,6 @@
 package Data::Morph::Backend::DBIC;
 {
-  $Data::Morph::Backend::DBIC::VERSION = '1.112730';
+  $Data::Morph::Backend::DBIC::VERSION = '1.112760';
 }
 
 #ABSTRACT: Provides a Data::Morph backend for DBIx::Class
@@ -105,7 +105,7 @@ Data::Morph::Backend::DBIC - Provides a Data::Morph backend for DBIx::Class
 
 =head1 VERSION
 
-version 1.112730
+version 1.112760
 
 =head1 DESCRIPTION
 

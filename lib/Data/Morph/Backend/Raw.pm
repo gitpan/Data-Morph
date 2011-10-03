@@ -1,6 +1,6 @@
 package Data::Morph::Backend::Raw;
 {
-  $Data::Morph::Backend::Raw::VERSION = '1.112730';
+  $Data::Morph::Backend::Raw::VERSION = '1.112760';
 }
 
 #ABSTRACT: Provides a backend that produces simple HashRefs
@@ -83,7 +83,7 @@ Data::Morph::Backend::Raw - Provides a backend that produces simple HashRefs
 
 =head1 VERSION
 
-version 1.112730
+version 1.112760
 
 =head1 DESCRIPTION
 

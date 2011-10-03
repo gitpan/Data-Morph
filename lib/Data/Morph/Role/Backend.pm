@@ -1,6 +1,6 @@
 package Data::Morph::Role::Backend;
 {
-  $Data::Morph::Role::Backend::VERSION = '1.112730';
+  $Data::Morph::Role::Backend::VERSION = '1.112760';
 }
 use MooseX::Role::Parameterized;
 use MooseX::Types::Moose(':all');
@@ -68,9 +68,14 @@ role
             \@_,
             {isa => __PACKAGE__},
             {isa => $p->input_type},
-            {isa => Str},
+            {isa => Maybe[Str]},
             {isa => CodeRef, optional => 1},
         );
+
+        if(!defined($key) && defined($post))
+        {
+            return $post->();
+        }
 
         my $val = $p->get_val->($object, $key);
         $val = $post->($val) if defined($post);
@@ -86,7 +91,7 @@ role
             \@_,
             {isa => __PACKAGE__},
             {isa => $p->input_type},
-            {isa => Defined},
+            {isa => Any},
             {isa => Str},
             {isa => CodeRef, optional => 1}
         );
@@ -106,7 +111,7 @@ Data::Morph::Role::Backend - Provides a role to consume to develop specialized b
 
 =head1 VERSION
 
-version 1.112730
+version 1.112760
 
 =head1 SYNOPSIS
 
@@ -203,16 +208,19 @@ as an argument, returning its return value
 
 =head2 retrieve
 
-    (INSTANCE, Str, CodeRef?)
+    (INSTANCE, Maybe[Str], CodeRef?)
 
 This method is what fetches the value from the instance using L</get_val>. The
 optional coderef parameter is what is passed in from the map if it is defined
 for a read operation. The coderef must be called with the return value from
 L</get_val>. And its return value returned.
 
+If an undefined key is given but a coderef is defined, the result from the
+coderef will be returned
+
 =head2 store
 
-    (INSTANCE, Defined, Str, CodeRef?)
+    (INSTANCE, Any, Str, CodeRef?)
 
 This method takes the Defined value and sets it into the instance using the Str
 key. The optional coderef parameter is what is passed if defined in the map in
