@@ -35,4 +35,4 @@ requires:
   namespace::autoclean: 0
 resources:
   repository: git://github.com/nperez/data-morph.git
-version: 1.112760
+version: 1.112770

@@ -1,6 +1,6 @@
 package Data::Morph::Role::Backend;
 {
-  $Data::Morph::Role::Backend::VERSION = '1.112760';
+  $Data::Morph::Role::Backend::VERSION = '1.112770';
 }
 use MooseX::Role::Parameterized;
 use MooseX::Types::Moose(':all');
@@ -111,7 +111,7 @@ Data::Morph::Role::Backend - Provides a role to consume to develop specialized b
 
 =head1 VERSION
 
-version 1.112760
+version 1.112770
 
 =head1 SYNOPSIS
 

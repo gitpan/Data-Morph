@@ -1,6 +1,6 @@
 package Data::Morph;
 {
-  $Data::Morph::VERSION = '1.112760';
+  $Data::Morph::VERSION = '1.112770';
 }
 
 #ABSTRACT: Morph data from one source to another
@@ -34,7 +34,7 @@ has map =>
             (
                 Str|Dict
                 [
-                    read => union( [Maybe[Str], Tuple[Str, CodeRef]] ),
+                    read => union( [Str, Tuple[Maybe[Str], CodeRef]] ),
                     write => Optional[Str|Tuple[Str, CodeRef]],
                 ]
             ),
@@ -42,7 +42,7 @@ has map =>
             (
                 Str|Dict
                 [
-                    read => union( [Maybe[Str], Tuple[Str, CodeRef]] ),
+                    read => union( [Str, Tuple[Maybe[Str], CodeRef]] ),
                     write => Optional[Str|Tuple[Str, CodeRef]],
                 ]
             )
@@ -181,7 +181,7 @@ Data::Morph - Morph data from one source to another
 
 =head1 VERSION
 
-version 1.112760
+version 1.112770
 
 =head1 SYNOPSIS
 
@@ -292,7 +292,7 @@ the type of the input.
             (
                 Str|Dict
                 [
-                    read => union( [Maybe[Str], Tuple[Str, CodeRef]] ),
+                    read => union( [Str, Tuple[Maybe[Str], CodeRef]] ),
                     write => Optional[Str|Tuple[Str, CodeRef]],
                 ]
             ),
@@ -300,7 +300,7 @@ the type of the input.
             (
                 Str|Dict
                 [
-                    read => union( [Maybe[Str], Tuple[Str, CodeRef]] ),
+                    read => union( [Str, Tuple[Maybe[Str], CodeRef]] ),
                     write => Optional[Str|Tuple[Str, CodeRef]],
                 ]
             )
