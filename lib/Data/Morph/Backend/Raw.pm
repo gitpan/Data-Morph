@@ -1,6 +1,6 @@
 package Data::Morph::Backend::Raw;
 {
-  $Data::Morph::Backend::Raw::VERSION = '1.112770';
+  $Data::Morph::Backend::Raw::VERSION = '1.113270';
 }
 
 #ABSTRACT: Provides a backend that produces simple HashRefs
@@ -51,16 +51,47 @@ with 'Data::Morph::Role::Backend' =>
         {
             my @paths = split('/', $key);
             my $place = $obj;
+
             for(0..$#paths)
             {
                 next if $paths[$_] eq '';
-                if($_ == $#paths)
+                my $path = $paths[$_];
+                
+                # handling arrays in path
+                if ($path =~ /\*\[\d+\]/)
                 {
-                    $place->{$paths[$_]} = $val;
+                    my ($index) = $path =~ /\*\[(\d+)\]/;
+                    
+                    if($_ == $#paths)
+                    {
+                        $place->[$index] = $val;
+                    }
+                    else
+                    {
+                        if (!defined($place->[$index]))
+                        {
+                            $place->[$index] = ($paths[$_+1] =~ m/\*\[\d+\]/ ? [] : {});
+                        }
+                        
+                        $place = ref($place->[$index]) eq 'HASH' ? \%{$place->[$index]} : \@{$place->[$index]};
+                    }
+
                 }
                 else
                 {
-                    $place = \%{$place->{$paths[$_]} = {}};
+                    if($_ == $#paths)
+                    {
+                        $place->{$path} = $val;
+                    }
+                    else
+                    {
+                        if (!exists($place->{$path}))
+                        {
+                            $place->{$path} = ($paths[$_+1] =~ m/\*\[\d+\]/ ? [] : {});
+                        }
+                        
+                        $place = ref($place->{$path}) eq 'HASH' ? \%{$place->{$path}} : \@{$place->{$path}};
+                    }
                 }
             }
         }
@@ -83,11 +114,11 @@ Data::Morph::Backend::Raw - Provides a backend that produces simple HashRefs
 
 =head1 VERSION
 
-version 1.112770
+version 1.113270
 
 =head1 DESCRIPTION
 
-Data::Morph::Backend::Raw is a backend for L<Data::Morph> that deals with raw Perl hashes. Map directives are more complicated than the other shipped backends like L<Data::Morph::Backend::Object>. The keys should be paths as defined by L<Data::DPath>. Read and write operations can have rather complex dpaths defined for them to set or return values. One special case is when the dpath for a write operation points to a non-existant piece: the substrate is created for you and the value deposited. One caveat is that the path must be dumb simple. It must only be a nested hash dpath (eg, '/some/path/here'). Any fancy filtering or array accesses would require too much effort to parse and generate the structure. Please see L<Data::Morph/SYNOPSIS> for an exmaple of a map using the Raw backend.
+Data::Morph::Backend::Raw is a backend for L<Data::Morph> that deals with raw Perl hashes. Map directives are more complicated than the other shipped backends like L<Data::Morph::Backend::Object>. The keys should be paths as defined by L<Data::DPath>. Read and write operations can have rather complex dpaths defined for them to set or return values. One special case is when the dpath for a write operation points to a non-existant piece: the substrate is created for you and the value deposited. One caveat is that the path must be dumb simple without fancy filtering. Hash and array access (using the syntax '*[1]') into the path is supported. Please see L<Data::Morph/SYNOPSIS> for an exmaple of a map using the Raw backend.
 
 =head1 PUBLIC_ATTRIBUTES
 

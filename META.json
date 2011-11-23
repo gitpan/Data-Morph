@@ -4,7 +4,7 @@
       "Nicholas R. Perez <nperez@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Dist::Zilla version 4.300003, CPAN::Meta::Converter version 2.112150",
    "license" : [
       "perl_5"
    ],
@@ -55,6 +55,6 @@
          "url" : "git://github.com/nperez/data-morph.git"
       }
    },
-   "version" : "1.112770"
+   "version" : "1.113270"
 }
 

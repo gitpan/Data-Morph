@@ -1,6 +1,6 @@
 package Data::Morph::Backend::Object;
 {
-  $Data::Morph::Backend::Object::VERSION = '1.112770';
+  $Data::Morph::Backend::Object::VERSION = '1.113270';
 }
 
 #ABSTRACT: Provides a Data::Morph backend for talking to objects
@@ -40,7 +40,7 @@ Data::Morph::Backend::Object - Provides a Data::Morph backend for talking to obj
 
 =head1 VERSION
 
-version 1.112770
+version 1.113270
 
 =head1 DESCRIPTION
 

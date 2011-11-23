@@ -1,6 +1,6 @@
 package Data::Morph;
 {
-  $Data::Morph::VERSION = '1.112770';
+  $Data::Morph::VERSION = '1.113270';
 }
 
 #ABSTRACT: Morph data from one source to another
@@ -181,7 +181,7 @@ Data::Morph - Morph data from one source to another
 
 =head1 VERSION
 
-version 1.112770
+version 1.113270
 
 =head1 SYNOPSIS
 
@@ -221,7 +221,7 @@ version 1.112770
         },
         {
             recto => 'flarg',
-            verso => '/some/path/goes/here/flarg'
+            verso => '/some/path/goes/*[2]/here/flarg'
         },
     ];
 
