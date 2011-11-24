@@ -1,6 +1,6 @@
 package Data::Morph;
 {
-  $Data::Morph::VERSION = '1.113270';
+  $Data::Morph::VERSION = '1.113280';
 }
 
 #ABSTRACT: Morph data from one source to another
@@ -181,7 +181,7 @@ Data::Morph - Morph data from one source to another
 
 =head1 VERSION
 
-version 1.113270
+version 1.113280
 
 =head1 SYNOPSIS
 
@@ -217,7 +217,11 @@ version 1.113270
                 read => ['bar', sub { my ($f) = @_; $f =~ s/\d+//; $f } ],
                 write => [ 'bar', sub { "123".shift(@_) } ], # pre write
             },
-            verso => '/BAR',
+            verso => 
+            {
+                read => '/BAR|/bar',
+                write => '/BAR',
+            },
         },
         {
             recto => 'flarg',
