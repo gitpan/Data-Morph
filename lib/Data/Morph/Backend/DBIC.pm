@@ -1,8 +1,5 @@
 package Data::Morph::Backend::DBIC;
-{
-  $Data::Morph::Backend::DBIC::VERSION = '1.113280';
-}
-
+$Data::Morph::Backend::DBIC::VERSION = '1.140400';
 #ABSTRACT: Provides a Data::Morph backend for DBIx::Class
 
 use Moose;
@@ -96,6 +93,7 @@ with 'Data::Morph::Role::Backend' =>
 __PACKAGE__->meta->make_immutable();
 1;
 
+__END__
 
 =pod
 
@@ -105,7 +103,7 @@ Data::Morph::Backend::DBIC - Provides a Data::Morph backend for DBIx::Class
 
 =head1 VERSION
 
-version 1.113280
+version 1.140400
 
 =head1 DESCRIPTION
 
@@ -171,7 +169,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

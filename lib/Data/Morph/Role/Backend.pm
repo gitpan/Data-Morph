@@ -1,7 +1,5 @@
 package Data::Morph::Role::Backend;
-{
-  $Data::Morph::Role::Backend::VERSION = '1.113280';
-}
+$Data::Morph::Role::Backend::VERSION = '1.140400';
 use MooseX::Role::Parameterized;
 use MooseX::Types::Moose(':all');
 use MooseX::Params::Validate;
@@ -102,6 +100,7 @@ role
 };
 1;
 
+__END__
 
 =pod
 
@@ -111,7 +110,7 @@ Data::Morph::Role::Backend - Provides a role to consume to develop specialized b
 
 =head1 VERSION
 
-version 1.113280
+version 1.140400
 
 =head1 SYNOPSIS
 
@@ -239,6 +238,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__

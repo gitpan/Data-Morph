@@ -1,8 +1,5 @@
 package Data::Morph::Backend::Raw;
-{
-  $Data::Morph::Backend::Raw::VERSION = '1.113280';
-}
-
+$Data::Morph::Backend::Raw::VERSION = '1.140400';
 #ABSTRACT: Provides a backend that produces simple HashRefs
 
 use Moose;
@@ -125,6 +122,7 @@ with 'Data::Morph::Role::Backend' =>
 __PACKAGE__->meta->make_immutable();
 1;
 
+__END__
 
 =pod
 
@@ -134,7 +132,7 @@ Data::Morph::Backend::Raw - Provides a backend that produces simple HashRefs
 
 =head1 VERSION
 
-version 1.113280
+version 1.140400
 
 =head1 DESCRIPTION
 
@@ -167,8 +165,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-
-

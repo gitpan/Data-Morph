@@ -1,4 +1,8 @@
-Revision history for Data-Morph: 1.113280
+Revision history for Data-Morph: 1.140400
+
+1.140400  2014-02-09 13:58:27CET+0100 Europe/Amsterdam
+        Fix heisenbug around failing CPAN Testers reports. See 73e0ec0
+        for more details.
 
 1.113280  2011-11-24 13:51:27 Europe/Amsterdam
         Add support for alternations on read directives for the Raw backend

@@ -7,6 +7,7 @@ use Data::Morph;
 use Data::Morph::Backend::DBIC;
 use Data::Morph::Backend::Object;
 use Data::Morph::Backend::Raw;
+use Moose::Util::TypeConstraints qw/class_type/;
 use DBD::SQLite;
 
 {
@@ -157,7 +158,7 @@ my $map4 =
 
 my $map5 = [ { recto => { read => 'foo', write => 'set_foo' }, verso => '/Bar|/bar' } ];
 
-my $obj_backend = Data::Morph::Backend::Object->new(new_instance => sub { Foo->new() });
+my $obj_backend = Data::Morph::Backend::Object->new(input_type => class_type('Foo'),  new_instance => sub { Foo->new() });
 my $raw_backend = Data::Morph::Backend::Raw->new();
 my $dbc_backend = Data::Morph::Backend::DBIC->new(result_set => $schema->resultset('Blah'));
 

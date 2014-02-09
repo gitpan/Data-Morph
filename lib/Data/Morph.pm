@@ -1,8 +1,5 @@
 package Data::Morph;
-{
-  $Data::Morph::VERSION = '1.113280';
-}
-
+$Data::Morph::VERSION = '1.140400';
 #ABSTRACT: Morph data from one source to another
 
 use Moose;
@@ -172,6 +169,7 @@ sub morph
 
 1;
 
+__END__
 
 =pod
 
@@ -181,7 +179,7 @@ Data::Morph - Morph data from one source to another
 
 =head1 VERSION
 
-version 1.113280
+version 1.140400
 
 =head1 SYNOPSIS
 
@@ -428,6 +426,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
